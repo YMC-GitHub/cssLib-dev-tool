@@ -23,17 +23,17 @@ app/index.js
 //…随便写写
 ```
 
-##编译试试
+## 编译试试
 ```
 node_modules/.bin/webpack
 ```
 
-##开浏览器
+## 开浏览器
 ```
 //此版本先自己手动打开浏览器，输入网址http://localhost:8080/
 ```
 
-##建服务器
+## 建服务器
 ```
 //安装类库
 npm install webpack-dev-server@2.11.2 --save-dev
@@ -46,7 +46,7 @@ node_modules/.bin/webpack-dev-server --content-base app
 
 ```
 
-##“自刷内容”
+## “自刷内容”
 ```
 //安装类库
 npm install --save-dev html-webpack-plugin@3.0.0
@@ -55,7 +55,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin'); //
 plugins: [new HtmlWebpackPlugin({template: path.resolve(__dirname, 'app/index.html'), filename: 'index.html', inject: 'body' })]
 
 ```
-##自刷样式
+## 自刷样式
 ```
 //安装类库
 npm install --save-dev style-loader@0.20.2 css-loader@0.28.10
@@ -82,7 +82,8 @@ module: {
 
 > modules: true是ture还是false自行选择
 
-##自刷配置
+
+## 自刷配置
 ```
 //安装类库
 npm install nodemon@1.15.0 --save-dev
@@ -92,7 +93,8 @@ npm install nodemon@1.15.0 --save-dev
 
 > 有点问题，代处理。
 
-##样式提取
+
+## 样式提取
 ```
 //安装类库
 npm install extract-text-webpack-plugin@3.0.0 --save-dev
@@ -217,6 +219,7 @@ npm install --save-dev less-loader@4.0.6 less@3.0.1
 
 ```
 ## 参考资料
-[webpack-自动刷新与解析](https://www.cnblogs.com/stoneniqiu/p/6444960.html)
-[webpack-dev-server开启服务监测js、HTML、CSS并自动刷新网页的套路详细步骤并附代码](https://www.jianshu.com/p/c6f9eb3cba60)
-[webpack 中 css 和 html 刷新问题的解决思路](https://www.cnblogs.com/liang1100/p/8457701.html)
+
+- [webpack-自动刷新与解析](https://www.cnblogs.com/stoneniqiu/p/6444960.html)
+- [webpack-dev-server开启服务监测js、HTML、CSS并自动刷新网页的套路详细步骤并附代码](https://www.jianshu.com/p/c6f9eb3cba60)
+- [webpack 中 css 和 html 刷新问题的解决思路](https://www.cnblogs.com/liang1100/p/8457701.html)
