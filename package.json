@@ -4,8 +4,9 @@
   "description": "a tool for building css lib",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node_modules/.bin/webpack-dev-server --content-base app"
+    "dev": "node_modules/.bin/webpack-dev-server --content-base app",
+    "dev2": "nodemon --watch webpack.config.js --exec \"npm run dev\"",
+    "build": "node_modules/.bin/webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -21,16 +22,18 @@
   "author": "Ymc hualei03042013@163.com",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^8.0.0",
     "css-loader": "^0.28.10",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^1.1.10",
     "html-webpack-plugin": "^3.0.0",
+    "image-webpack-loader": "^3.3.0",
     "less": "^3.0.1",
     "less-loader": "^4.0.6",
     "nodemon": "^1.15.0",
+    "postcss-loader": "^2.1.1",
     "style-loader": "^0.20.2",
     "webpack": "^3.5.5",
-    "webpack-dev-server": "^2.11.2",
-    "autoprefixer": "^8.0.0",
-    "extract-text-webpack-plugin": "^3.0.0",
-    "postcss-loader": "^2.1.1"
+    "webpack-dev-server": "^2.11.2"
   }
 }
