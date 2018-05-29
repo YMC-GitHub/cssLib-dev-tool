@@ -1,0 +1,36 @@
+{
+  "name": "csslib-dev-tool",
+  "version": "1.0.0",
+  "description": "a tool for building css lib",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node_modules/.bin/webpack-dev-server --content-base app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YMC-GitHub"
+  },
+  "keywords": [
+    "css",
+    "lib",
+    "dev",
+    "webpack",
+    "ymc"
+  ],
+  "author": "Ymc hualei03042013@163.com",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^0.28.10",
+    "html-webpack-plugin": "^3.0.0",
+    "less": "^3.0.1",
+    "less-loader": "^4.0.6",
+    "nodemon": "^1.15.0",
+    "style-loader": "^0.20.2",
+    "webpack": "^3.5.5",
+    "webpack-dev-server": "^2.11.2",
+    "autoprefixer": "^8.0.0",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "postcss-loader": "^2.1.1"
+  }
+}

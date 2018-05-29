@@ -1,0 +1,515 @@
+﻿p {
+    background-color: blue;
+}
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			[class^=btn] {
+				-webkit-user-select: none;
+				-ms-user-select: none;
+				-moz-user-select: none;
+				margin: 10px 50px;
+			}
+			
+			.gray {
+				background: gray;
+				color: #4e4545;
+			}
+			
+			.steelblue {
+				background: steelblue;
+				color: #2b608d;
+			}
+			
+			.wheat {
+				background: #CC0000;
+				color: #880000;
+			}
+			
+			.aquamarine {
+				background: #009966;
+				color: #336666;
+			}
+			
+			.blueviolet {
+				background: blueviolet;
+				color: #5f1d9d;
+			}
+			
+			.btnGroup {
+				margin: 0px auto;
+				padding: 10px;
+				overflow: hidden;
+				width: 500px;
+			}
+			/*3d按钮*/
+			
+			div[class^=btn3d] {
+				border: 1px solid rgba(0, 0, 0, 0.1);
+				width: 100px;
+				line-height: 30px;
+				text-align: center;
+				cursor: pointer;
+				font-size: 18px;
+				float: left;
+				position: relative;
+				transform: rotateX(-20deg);
+				transform-origin: top;
+			}
+			
+			.btn3d01 {
+				box-shadow: 0px 7px 1px 0px #4e4545;
+			}
+			
+			.btn3d01:active {
+				box-shadow: 0px 1px 1px #4e4545;
+				transform: rotateX(0deg);
+				text-shadow: 0px 0px 5px white;
+			}
+			
+			.btn3d02 {
+				box-shadow: 0px 7px 1px #2b608d;
+			}
+			
+			.btn3d02:active {
+				box-shadow: 0px 1px 1px #2b608d;
+				transform: rotateX(0deg);
+				text-shadow: 0px 0px 5px white;
+			}
+			
+			.btn3d03 {
+				box-shadow: 0px 7px 1px #880000;
+			}
+			
+			.btn3d03:active {
+				box-shadow: 0px 1px 1px #880000;
+				transform: rotateX(0deg);
+				text-shadow: 0px 0px 5px white;
+			}
+			
+			.btn3d04 {
+				box-shadow: 0px 7px 1px #336666;
+			}
+			
+			.btn3d04:active {
+				box-shadow: 0px 1px 1px #336666;
+				transform: rotateX(0deg);
+				text-shadow: 0px 0px 5px white;
+			}
+			
+			.btn3d05 {
+				box-shadow: 0px 7px 1px #5f1d9d;
+			}
+			
+			.btn3d05:active {
+				box-shadow: 0px 1px 1px #5f1d9d;
+				transform: rotateX(0deg);
+				text-shadow: 0px 0px 5px white;
+			}
+			/*飘带按钮*/
+			
+			div[class^=btnpd] {
+				width: 100px;
+				line-height: 30px;
+				text-align: center;
+				cursor: pointer;
+				font-size: 18px;
+				float: left;
+				position: relative;
+			}
+			
+			div[class^=btnpd]:hover {
+				text-shadow: 0px 0px 10px white;
+			}
+			/*左侧*/
+			
+			.btnpd01 {
+				border-left: 1px dashed white;
+			}
+			
+			.btnpd01:before,
+			.btnpd01:after {
+				content: '';
+				position: absolute;
+				left: -16px;
+			}
+			
+			.btnpd01:before {
+				top: 0;
+				border-top: 15px solid gray;
+				border-left: 15px solid transparent;
+			}
+			
+			.btnpd01:after {
+				top: 15px;
+				border-bottom: 15px solid gray;
+				border-left: 15px solid transparent;
+			}
+			/*右侧*/
+			
+			.btnpd02 {
+				border-right: 1px dotted white;
+			}
+			
+			.btnpd02:before,
+			.btnpd02:after {
+				content: '';
+				position: absolute;
+				right: -16px;
+			}
+			
+			.btnpd02:before {
+				top: 0;
+				border-top: 15px solid steelblue;
+				border-right: 15px solid transparent;
+			}
+			
+			.btnpd02:after {
+				top: 15px;
+				border-bottom: 15px solid steelblue;
+				border-right: 15px solid transparent;
+			}
+			/*两侧*/
+			
+			.btnpd03 {
+				border-right: 1px dotted white;
+				border-left: 1px dotted white;
+			}
+			
+			.btnpd03:before,
+			.btnpd03:after {
+				content: '';
+				position: absolute;
+				right: -16px;
+			}
+			
+			.btnpd03:before {
+				top: 0;
+				border-top: 15px solid #CC0000;
+				border-right: 15px solid transparent;
+			}
+			
+			.btnpd03:after {
+				top: 15px;
+				border-bottom: 15px solid #CC0000;
+				border-right: 15px solid transparent;
+			}
+			
+			.bd3f {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+				z-index: -1;
+			}
+			
+			.bd3f:before,
+			.bd3f:after {
+				content: '';
+				position: absolute;
+				left: -16px;
+			}
+			
+			.bd3f:before {
+				top: 0;
+				border-top: 15px solid #CC0000;
+				border-left: 15px solid transparent;
+			}
+			
+			.bd3f:after {
+				top: 15px;
+				border-bottom: 15px solid #CC0000;
+				border-left: 15px solid transparent;
+			}
+			/*复杂飘带向上*/
+			
+			.bd4fl,
+			.bd4fr {
+				width: 10px;
+				height: 25px;
+				position: absolute;
+				z-index: -1;
+				background: #039565;
+				top: 0px;
+			}
+			
+			.bd4fl {
+				left: -10px;
+			}
+			
+			.bd4fr {
+				right: -10px;
+			}
+			
+			.bd4fl:before,
+			.bd4fl:after,
+			.bd4fr:before,
+			.bd4fr:after {
+				content: '';
+				position: absolute;
+			}
+			
+			.bd4fl:before {
+				top: -5px;
+				left: 0;
+				border-bottom: 5px solid #039565;
+				border-right: 10px solid transparent;
+			}
+			
+			.bd4fl:after {
+				bottom: -5px;
+				left: 0;
+				border-top: 5px solid #039565;
+				border-left: 10px solid transparent;
+			}
+			
+			.bd4fr:before {
+				top: -5px;
+				left: 0;
+				border-bottom: 5px solid #039565;
+				border-left: 10px solid transparent;
+			}
+			
+			.bd4fr:after {
+				bottom: -5px;
+				left: 0;
+				border-top: 5px solid #039565;
+				border-right: 10px solid transparent;
+			}
+			
+			.bd4fl01,
+			.bd4fr01 {
+				width: 200%;
+				height: 30px;
+				position: relative;
+				background: #009966;
+				top: -5px;
+			}
+			
+			.bd4fl01 {
+				right: 200%;
+				border-right: 1px dotted white;
+			}
+			
+			.bd4fr01 {
+				left: 100%;
+				border-left: 1px dotted white;
+			}
+			
+			.bd4fl01:before,
+			.bd4fl01:after,
+			.bd4fr01:before,
+			.bd4fr01:after {
+				content: '';
+				position: absolute;
+			}
+			
+			.bd4fl01:before {
+				left: -15px;
+				top: 0px;
+				border-top: 15px solid #009966;
+				border-left: 15px solid transparent;
+			}
+			
+			.bd4fl01:after {
+				left: -15px;
+				top: 15px;
+				border-bottom: 15px solid #009966;
+				border-left: 15px solid transparent;
+			}
+			
+			.bd4fr01:before {
+				right: -15px;
+				top: 0px;
+				border-top: 15px solid #009966;
+				border-right: 15px solid transparent;
+			}
+			
+			.bd4fr01:after {
+				right: -15px;
+				top: 15px;
+				border-bottom: 15px solid #009966;
+				border-right: 15px solid transparent;
+			}
+			/*复杂飘带向下*/
+			
+			.bd5fl,
+			.bd5fr {
+				width: 10px;
+				height: 25px;
+				position: absolute;
+				z-index: -1;
+				background: #8529db;
+				bottom: 0px;
+			}
+			
+			.bd5fl {
+				left: -10px;
+			}
+			
+			.bd5fr {
+				right: -10px;
+			}
+			
+			.bd5fl:before,
+			.bd5fl:after,
+			.bd5fr:before,
+			.bd5fr:after {
+				content: '';
+				position: absolute;
+			}
+			
+			.bd5fl:before {
+				top: -5px;
+				left: 0;
+				border-bottom: 5px solid #8529db;
+				border-left: 10px solid transparent;
+			}
+			
+			.bd5fl:after {
+				bottom: -5px;
+				left: 0;
+				border-top: 5px solid #8529db;
+				border-right: 10px solid transparent;
+			}
+			
+			.bd5fr:before {
+				top: -5px;
+				left: 0;
+				border-bottom: 5px solid #8529db;
+				border-right: 10px solid transparent;
+			}
+			
+			.bd5fr:after {
+				bottom: -5px;
+				left: 0;
+				border-top: 5px solid #8529db;
+				border-left: 10px solid transparent;
+			}
+			
+			.bd5fl01,
+			.bd5fr01 {
+				width: 200%;
+				height: 30px;
+				position: relative;
+				background: blueviolet;
+				top: 0px;
+			}
+			
+			.bd5fl01 {
+				right: 200%;
+				border-right: 1px dotted white;
+				z-index: 1;
+			}
+			
+			.bd5fr01 {
+				left: 100%;
+				border-left: 1px dotted white;
+				z-index: 1;
+			}
+			
+			.bd5fl01:before,
+			.bd5fl01:after,
+			.bd5fr01:before,
+			.bd5fr01:after {
+				content: '';
+				position: absolute;
+			}
+			
+			.bd5fl01:before {
+				left: -15px;
+				top: 0px;
+				border-top: 15px solid blueviolet;
+				border-left: 15px solid transparent;
+			}
+			
+			.bd5fl01:after {
+				left: -15px;
+				top: 15px;
+				border-bottom: 15px solid blueviolet;
+				border-left: 15px solid transparent;
+			}
+			
+			.bd5fr01:before {
+				right: -15px;
+				top: 0px;
+				border-top: 15px solid blueviolet;
+				border-right: 15px solid transparent;
+			}
+			
+			.bd5fr01:after {
+				right: -15px;
+				top: 15px;
+				border-bottom: 15px solid blueviolet;
+				border-right: 15px solid transparent;
+			}
+			/*内扣*/
+			
+			.btnpd06:before,
+			.btnpd06:after {
+				content: '';
+				position: absolute;
+			}
+			
+			.btnpd06:before {
+				left: 0;
+				bottom: -5px;
+				border-top: 5px solid #767575;
+				border-left: 8px solid transparent;
+			}
+			
+			.btnpd06:after {
+				right: 0;
+				bottom: -5px;
+				border-top: 5px solid #767575;
+				border-right: 8px solid transparent;
+			}
+			
+			.btnpd09:before,
+			.btnpd09:after {
+				content: '';
+				position: absolute;
+			}
+			
+			.btnpd09:before {
+				left: 0;
+				top: -5px;
+				border-bottom: 5px solid #767575;
+				border-left: 8px solid transparent;
+			}
+			
+			.btnpd09:after {
+				right: 0;
+				top: -5px;
+				border-bottom: 5px solid #767575;
+				border-right: 8px solid transparent;
+			}
+			/*拼接*/
+			
+			.pinjieBox div {
+				margin: 10px 4px;
+				float: left;
+			}
+			
+			.btnpd07:before,
+			.btnpd08:before {
+				content: '';
+				position: absolute;
+			}
+			
+			.btnpd07:before {
+				right: -10px;
+				top: 0;
+				border-bottom: 30px solid gray;
+				border-right: 10px solid transparent;
+			}
+			
+			.btnpd08:before {
+				left: -10px;
+				top: 0;
+				border-top: 30px solid steelblue;
+				border-left: 10px solid transparent;
+			}
