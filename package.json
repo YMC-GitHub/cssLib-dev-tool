@@ -5,8 +5,10 @@
   "main": "webpack.config.js",
   "scripts": {
     "dev": "node_modules/.bin/webpack-dev-server --content-base app",
-    "dev2": "nodemon --watch webpack.config.js --exec \"npm run dev\"",
-    "build": "node_modules/.bin/webpack-dev-server"
+    "start": "nodemon --watch webpack.config.js --exec \"npm run dev\"",
+    "build": "cross-env NODE_ENV=production node_modules/.bin/webpack",
+    "test":  "nodemon --watch webpack.config.js --exec \"npm run build\"",
+    "study": "webpack --json --profile > stats.json"
   },
   "repository": {
     "type": "git",
@@ -23,6 +25,7 @@
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^8.0.0",
+    "cross-env": "^5.1.4",
     "css-loader": "^0.28.10",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^1.1.10",
