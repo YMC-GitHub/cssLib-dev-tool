@@ -1,13 +1,13 @@
 {
   "name": "csslib-dev-tool",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "a tool for building css lib",
   "main": "webpack.config.js",
   "scripts": {
     "dev": "node_modules/.bin/webpack-dev-server --content-base app",
     "start": "nodemon --watch webpack.config.js --exec \"npm run dev\"",
     "build": "cross-env NODE_ENV=production node_modules/.bin/webpack",
-    "test":  "nodemon --watch webpack.config.js --exec \"npm run build\"",
+    "test": "nodemon --watch webpack.config.js --exec \"npm run build\"",
     "study": "webpack --json --profile > stats.json"
   },
   "repository": {
