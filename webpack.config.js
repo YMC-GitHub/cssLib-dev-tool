@@ -4,46 +4,44 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var webpack = require('webpack');
 
 var isProduction = process.env.NODE_ENV === 'production';
-console.log(isProduction)
-console.log(process.env)
+//console.log(`now is pro:${isProduction}`)
+//console.log(process.env.NODE_ENV)
 
-var minify = isProduction ? 'minimize' : '';
 var minPostfix = isProduction ? '.min' : '';
-var hash = '[hash:7]';
-var cssLoader = [{
-		loader: 'style-loader'
-	},
-	{
-		loader: 'css-loader',
-		options: {
-			modules: false
-		}
-	},
-	{
-		loader: 'postcss-loader',
-		options: {
-			ident: 'postcss',
-			plugins: [
-				require('autoprefixer')({
-					broswer: 'last 5 versions'
-				})
-			]
-		}
-	}
-];
-var lessLoader = cssLoader.concat({
-	loader: 'less-loader'
-});
-//console.log(lessLoader)
+var hash = isProduction ? '_[hash:8]' : '';
+
+var cssLoader = ['style-loader', 'css-loader', 'postcss-loader'];
+cssLoader[1] = isProduction ? 'css-loader?minimize' : cssLoader[1];
+var lessLoader = cssLoader.concat('less-loader');
+//console.log(cssLoader)
 
 cssLoader = isProduction ? ExtractTextPlugin.extract({
 	fallback: 'style-loader',
-	use: cssLoader.shift(),
+	use: cssLoader.splice(1),
 }) : cssLoader;
 lessLoader = isProduction ? ExtractTextPlugin.extract({
 	fallback: 'style-loader',
-	use: lessLoader.shift(),
+	use: lessLoader.splice(1),
 }) : lessLoader;
+//console.log(lessLoader)
+
+var basePlugins, envPlugins;
+basePlugins = [new webpack.DefinePlugin({
+	'process.env': {
+		'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+	}
+})];
+envPlugins = isProduction ? [
+	new ExtractTextPlugin(`style.${hash}${minPostfix}.css`, {
+		allChunks: true
+	})
+] : [ /*for lib it may be good as dev,pro for app*/
+	new HtmlWebpackPlugin({
+		template: path.resolve(__dirname, 'app/index.html'),
+		filename: 'index.html',
+		inject: 'body'
+	})
+];
 
 module.exports = {
 	entry: {
@@ -51,23 +49,10 @@ module.exports = {
 	},
 	output: {
 		path: path.resolve(__dirname, "build"),
-		publicPath: "/assets/",
-		filename: "bundle.js"
+		publicPath: isProduction ? "/assets/" : "/",
+		filename: isProduction ? `bundle.${hash}${minPostfix}.js` : "bundle.js"
 	},
-	plugins: [
-	new webpack.DefinePlugin({
-		'process.env': {
-			'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
-		}
-	}),
-	new ExtractTextPlugin(`css/style.${hash}${minPostfix}.css`, {
-		allChunks: true
-	}),
-	new HtmlWebpackPlugin({
-		template: path.resolve(__dirname, 'app/index.html'),
-		filename: 'index.html',
-		inject: 'body'
-	})],
+	plugins: basePlugins.concat(envPlugins),
 	module: {
 		rules: [{
 				test: /\.css$/,
@@ -78,6 +63,14 @@ module.exports = {
 				test: /\.less$/,
 				exclude: /node_modules/,
 				use: lessLoader
+			},
+			{
+				test: /\.jpe?g$|\.gif$|\.png|\.ico$/,
+				use: [
+					//Emits the file into the output folder and returns the (relative) URL
+					'file-loader?name=[path][name].[ext]&context=app',
+					'image-webpack-loader?bypassOnDebug'
+				]
 			}
 		]
 	}
