@@ -32,12 +32,12 @@ basePlugins = [new webpack.DefinePlugin({
 	}
 })];
 envPlugins = isProduction ? [
-	new ExtractTextPlugin(`style.${hash}${minPostfix}.css`, {
+	new ExtractTextPlugin(`style${hash}${minPostfix}.css`, {
 		allChunks: true
 	})
 ] : [ /*for lib it may be good as dev,pro for app*/
 	new HtmlWebpackPlugin({
-		template: path.resolve(__dirname, 'app/index.html'),
+		template: path.resolve(__dirname, 'demo/index_old.html'),
 		filename: 'index.html',
 		inject: 'body'
 	})
@@ -45,12 +45,12 @@ envPlugins = isProduction ? [
 
 module.exports = {
 	entry: {
-		app: ["./app/main.js"]
+		app: isProduction ?["./src/index.js"]:["./demo/main.js"]
 	},
 	output: {
-		path: path.resolve(__dirname, "build"),
+		path: isProduction ?path.resolve(__dirname, "dist"):path.resolve(__dirname, "demo"),
 		publicPath: isProduction ? "/assets/" : "/",
-		filename: isProduction ? `bundle.${hash}${minPostfix}.js` : "bundle.js"
+		filename: isProduction ? `bundle${hash}${minPostfix}.js` : "bundle.js"
 	},
 	plugins: basePlugins.concat(envPlugins),
 	module: {
@@ -68,7 +68,7 @@ module.exports = {
 				test: /\.jpe?g$|\.gif$|\.png|\.ico$/,
 				use: [
 					//Emits the file into the output folder and returns the (relative) URL
-					'file-loader?name=[path][name].[ext]&context=app',
+					'file-loader?name=[path][name].[ext]&context=src',
 					'image-webpack-loader?bypassOnDebug'
 				]
 			}
