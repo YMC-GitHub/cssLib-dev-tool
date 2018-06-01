@@ -1,5 +1,5 @@
-﻿import './buttons.less';
-import img from './logo.png';
+﻿import '../src/index.js';
+
 (()=>{document.getElementById("app").innerHTML = "hi,this is an example!"})()
 
 let a = 111;  
