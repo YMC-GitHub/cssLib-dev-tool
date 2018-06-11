@@ -57,5 +57,7 @@ npm run study
 |示例目录|app|demo|
 |输出目录|build|dist|
 
+##### 未来版本
+使用webpack-dev-middleware+express搭建
 
 
