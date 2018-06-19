@@ -49,13 +49,7 @@ npm run study
 
 ##### 更新内容
 
-改变目录结构
-
-|目录|原先|现在|
-|----|----|----|
-|源码目录|app|src|
-|示例目录|app|demo|
-|输出目录|build|dist|
+添加url-loader
 
 ##### 未来版本
 使用webpack-dev-middleware+express搭建

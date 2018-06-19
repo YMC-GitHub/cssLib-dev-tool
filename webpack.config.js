@@ -64,14 +64,26 @@ module.exports = {
 				exclude: /node_modules/,
 				use: lessLoader
 			},
-			{
-				test: /\.jpe?g$|\.gif$|\.png|\.ico$/,
-				use: [
-					//Emits the file into the output folder and returns the (relative) URL
-					'file-loader?name=[path][name].[ext]&context=src',
-					'image-webpack-loader?bypassOnDebug'
-				]
-			}
+			
+			//.png|jpg|jpeg|gif|svg后缀文件用url-loader加载
+      {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        loader: 'url-loader',
+
+        options: {
+          limit: 10000,
+          name: './img/[name]_[hash:7].[ext]'
+        }
+      },
+      //.woff2|eot|ttf|otf后缀文件用url-loader加载
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: './fonts/[name]_[hash:7].[ext]'
+        }
+      }
 		]
 	}
 }

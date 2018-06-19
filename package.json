@@ -36,6 +36,7 @@
     "nodemon": "^1.15.0",
     "postcss-loader": "^2.1.1",
     "style-loader": "^0.20.2",
+    "url-loader": "^1.0.1",
     "webpack": "^3.5.5",
     "webpack-dev-server": "^2.11.2"
   }
