@@ -1,6 +1,6 @@
 ### 基于webpack开发样式类库
 
-> 这里使用webpack-dev-server建服务器
+> 这里使用express建服务器
 
 
 #### 特征简介
@@ -23,10 +23,11 @@ step01:复制package.json
 step02:npm install
 
 方式2：
+git clone  -b v2.0.0 https://github.com/YMC-GitHub/cssLib-dev-tool.git
 ......
 
 //开发
-npm run start
+npm run dev
 
 //构建输出
 npm run build
@@ -35,23 +36,11 @@ npm run build
 npm run study
 ```
 
-##### 技术准备
-|类目|描述|
-|----|----|
-|环境变量|webpack.DefinePlugin|
-|传入参数|cross-env@5.1.4|
-|样式提取|extract-text-webpack-plugin@3.0.0|
-|字体图标|file-loader@1.1.10|
-|样式压缩|css-loader@0.28.10|
-
 ##### 建设记录
 若想知道是怎么建的请点击[这里](./HISTORY.md)
 
-##### 更新内容
-
-添加url-loader
 
 ##### 未来版本
-使用webpack-dev-middleware+express搭建
+待改进之处：建立一通用配置文件，以及分别建立开发、产品、测试几种环境配置文件。在此基础上，可把nodemon类库卸掉（若只是单单为了传入标识环境的变量）。
 
 

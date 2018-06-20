@@ -4,10 +4,9 @@
   "description": "a tool for building css lib",
   "main": "webpack.config.js",
   "scripts": {
-    "dev": "node_modules/.bin/webpack-dev-server --content-base src",
-    "start": "nodemon --watch webpack.config.js --exec \"npm run dev\"",
+    "dev": "node dev-server.js",
+    "dev:watch": "nodemon --watch dev-server.js --exec \" node dev-server.js\"",
     "build": "cross-env NODE_ENV=production node_modules/.bin/webpack",
-    "test": "nodemon --watch webpack.config.js --exec \"npm run build\"",
     "study": "webpack --json --profile > stats.json"
   },
   "repository": {
@@ -27,6 +26,7 @@
     "autoprefixer": "^8.0.0",
     "cross-env": "^5.1.4",
     "css-loader": "^0.28.10",
+    "eventsource-polyfill": "^0.9.6",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^1.1.10",
     "html-webpack-plugin": "^3.0.0",
@@ -38,6 +38,11 @@
     "style-loader": "^0.20.2",
     "url-loader": "^1.0.1",
     "webpack": "^3.5.5",
-    "webpack-dev-server": "^2.11.2"
+    "webpack-dev-middleware": "^1.8.3",
+    "webpack-dev-server": "^2.11.2",
+    "webpack-hot-middleware": "^2.22.2"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
   }
 }

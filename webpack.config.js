@@ -3,17 +3,26 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var webpack = require('webpack');
 
+/***变量****/
+var config = require('./config.js');
+//环境标识
 var isProduction = process.env.NODE_ENV === 'production';
-//console.log(`now is pro:${isProduction}`)
-//console.log(process.env.NODE_ENV)
 
+//是否压缩
 var minPostfix = isProduction ? '.min' : '';
+
+//文件指纹
 var hash = isProduction ? '_[hash:8]' : '';
 
+//样式提取
+var ExtractCssOptions ={};
+ExtractCssOptions.name = `style${hash}${minPostfix}.css`;
+
+//其加载器
 var cssLoader = ['style-loader', 'css-loader', 'postcss-loader'];
 cssLoader[1] = isProduction ? 'css-loader?minimize' : cssLoader[1];
 var lessLoader = cssLoader.concat('less-loader');
-//console.log(cssLoader)
+
 
 cssLoader = isProduction ? ExtractTextPlugin.extract({
 	fallback: 'style-loader',
@@ -23,8 +32,9 @@ lessLoader = isProduction ? ExtractTextPlugin.extract({
 	fallback: 'style-loader',
 	use: lessLoader.splice(1),
 }) : lessLoader;
-//console.log(lessLoader)
 
+
+//所用插件
 var basePlugins, envPlugins;
 basePlugins = [new webpack.DefinePlugin({
 	'process.env': {
@@ -32,26 +42,31 @@ basePlugins = [new webpack.DefinePlugin({
 	}
 })];
 envPlugins = isProduction ? [
-	new ExtractTextPlugin(`style${hash}${minPostfix}.css`, {
+	new ExtractTextPlugin(ExtractCssOptions.name, {
 		allChunks: true
 	})
 ] : [ /*for lib it may be good as dev,pro for app*/
-	new HtmlWebpackPlugin({
-		template: path.resolve(__dirname, 'demo/index_old.html'),
+   new webpack.optimize.OccurrenceOrderPlugin(),
+   new webpack.HotModuleReplacementPlugin(),
+   new webpack.NoEmitOnErrorsPlugin(),
+   new HtmlWebpackPlugin({
+		template: path.resolve(__dirname, './index.html'),
 		filename: 'index.html',
 		inject: 'body'
 	})
 ];
 
-module.exports = {
+
+var options = {
 	entry: {
-		app: isProduction ?["./src/index.js"]:["./demo/main.js"]
+		app: ["./src/index.js"]
 	},
 	output: {
-		path: isProduction ?path.resolve(__dirname, "dist"):path.resolve(__dirname, "demo"),
-		publicPath: isProduction ? "/assets/" : "/",
+		path: path.resolve(__dirname, "dist"),
+		publicPath: isProduction ? "/assets/" : config.dev.path,
 		filename: isProduction ? `bundle${hash}${minPostfix}.js` : "bundle.js"
 	},
+	devtool: '#eval-source-map',
 	plugins: basePlugins.concat(envPlugins),
 	module: {
 		rules: [{
@@ -87,3 +102,13 @@ module.exports = {
 		]
 	}
 }
+
+//自动刷新
+if(!isProduction){
+Object.keys(options.entry).forEach(function (name) {
+  options.entry[name] = ['./dev-client.js'].concat(options.entry[name])
+})
+}
+
+
+module.exports = options;
