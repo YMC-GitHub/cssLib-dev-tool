@@ -15,8 +15,6 @@
 - [x] 样式压缩
 - [x] 字体图标
 
-#### 特征介绍
-
 
 #### 安装使用
 ```
@@ -25,27 +23,18 @@ step01:复制package.json
 step02:npm install
 
 方式2：
-git clone  -b v2.0.0 https://github.com/YMC-GitHub/cssLib-dev-tool.git
+git clone  -b 32.0.0 https://github.com/YMC-GitHub/cssLib-dev-tool.git
 ......
 
 //开发
 npm run dev
 
 //构建输出
-npm run build
+pro:webpack4
 
 //构建分析
 npm run study
 ```
-
-#### 建设记录
-若想知道是怎么建的请点击[这里](./HISTORY.md)
-
-
-#### 未来版本
-
-待改进之处：建立一通用配置文件，以及分别建立开发、产品、测试几种环境配置文件。在此基础上，可把cross-env类库卸掉（若只是单单为了传入环境变量）。
-
 
 #### 一些命令
 
@@ -156,6 +145,9 @@ eof
 
 注：这里只谈一些重要的！
 
+#### 建设记录
+若想知道是怎么建的请点击[这里](./HISTORY.md)
+
 #### 参考文献
-[](https://webpack.js.org/guides/hot-module-replacement/)
-[](https://github.com/webpack-contrib/webpack-hot-middleware)
+[webpack-offical-docs:guides:hot-module-replacement](https://webpack.js.org/guides/hot-module-replacement/)
+[webpack-hot-middleware-readme.md](https://github.com/webpack-contrib/webpack-hot-middleware)
