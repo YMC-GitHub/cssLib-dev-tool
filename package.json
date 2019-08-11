@@ -58,5 +58,14 @@
     "webpack-dev-middleware": "^1.8.3",
     "webpack-dev-server": "^3.7.2",
     "webpack-hot-middleware": "^2.22.2"
-  }
+  },
+  "files": [
+    "webpack.config.js",
+    "package.json",
+    "README.md",
+    "dev-server.js",
+    "dev-server.js",
+    "page-reload.js",
+    "config.js"
+  ]
 }
