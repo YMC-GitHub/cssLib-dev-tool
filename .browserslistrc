@@ -1,0 +1,14 @@
+#last 10 version
+#> 1%
+#maintained node versions
+#not dead
+
+#http://www.iwanttouse.com/#user-select-none,transforms2d,css-boxshadow,css-textshadow
+#=>85.36%
+#=>
+ie >= 10
+Chrome >=4
+ChromeAndroid >=50
+UCAndroid >=9
+ios_saf >=4
+Firefox >=3
