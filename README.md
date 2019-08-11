@@ -23,16 +23,16 @@ step01:复制package.json
 step02:npm install
 
 方式2：
-git clone  -b 32.0.0 https://github.com/YMC-GitHub/cssLib-dev-tool.git
+git clone  -b 3.0.0 https://github.com/YMC-GitHub/cssLib-dev-tool.git
 ......
 
 //开发
 npm run dev
 
-//构建输出
+//构建
 pro:webpack4
 
-//构建分析
+//分析
 npm run study
 ```
 
