@@ -1,0 +1,87 @@
+{
+  "terminal.integrated.shell.windows": "G:\\Git\\bin\\bash.exe",
+  "files.exclude": {
+      "**/.git": false,
+  },
+  // Always show the ESlint status bar item.
+  "eslint.alwaysShowStatus": false,
+
+  // Turns auto fix on save on or off.
+  "eslint.autoFixOnSave": true, // false
+
+  //
+  "eslint.codeAction.disableRuleComment": {
+      "enable": true,
+      "location": "separateLine",
+  },
+
+  //
+  "eslint.codeAction.showDocumentation": {
+      "enable": true,
+  },
+
+  // Controls whether eslint is enabled for JavaScript files or not.
+  "eslint.enable": true,
+
+  // A path added to NODE_PATH when resolving the eslint module.
+  "eslint.nodePath": null,
+
+  // The eslint options object to provide args normally passed to eslint when executed from a command line (see http://eslint.org/docs/developer-guide/nodejs-api#cliengine).
+  "eslint.options": {},
+
+  // The package manager you use to install node modules.
+  "eslint.packageManager": "npm",
+
+  // Controls whether a task for linting the whole workspace will be available.
+  "eslint.provideLintTask": false,
+
+  // Turns on quiet mode, which ignores warnings.
+  "eslint.quiet": false,
+
+  // Run the linter on save (onSave) or on type (onType)
+  "eslint.run": "onType",
+
+  // The location of the node binary to run ESLint under.
+  "eslint.runtime": null,
+
+  // Traces the communication between VSCode and the eslint linter service.
+  "eslint.trace.server": "off",
+
+  // An array of language ids which should be validated by ESLint
+  "eslint.validate": [
+      "javascript",
+      "javascriptreact"
+  ],
+
+  //
+  "eslint.workingDirectories": [],
+
+  //---圈复杂度---
+  // 是否开启
+	// A flag which indicates whether code metrics are shown as code lens
+	"codemetrics.basics.CodeLensEnabled": true,
+  // 多长显示
+	// Threshold to show code lens for code metrics
+	"codemetrics.basics.CodeLensHiddenUnder": 3,
+  // 颜色区分
+	// Color for the extreme complexity level
+	"codemetrics.basics.ComplexityColorExtreme": "#ff0000",
+	// Color for the high complexity level
+	"codemetrics.basics.ComplexityColorHigh": "#f44034",
+	// Color for the low complexity level
+	"codemetrics.basics.ComplexityColorLow": "#4bb14f",
+	// Color for the normal complexity level
+  "codemetrics.basics.ComplexityColorNormal": "#ffc208",
+    // ts
+    "javascript.referencesCodeLens.enabled": true,
+    // 文件移动提示
+    "javascript.updateImportsOnFileMove.enabled": "prompt",
+    // 代码建议
+    "javascript.suggestionActions.enabled": true,
+    // 管理模块引入
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+  },
+// 显示未用变量
+"editor.showUnused": true
+}

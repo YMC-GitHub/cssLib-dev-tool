@@ -1,0 +1,112 @@
+{
+  //20190730
+ "Print to console": {
+ 	"scope": "javascript,typescript",
+ 	"prefix": "log",
+ 	"body": [
+ 		"console.log('$1');",
+ 		"$2"
+ 	],
+ 	"description": "Log output to console"
+ },
+ "export_var_one": {
+  "scope": "javascript,typescript",
+  "prefix": "export_var_one",
+  "body": [
+    "export const firstName = 'Michael';",
+  ],
+  "description": "导出变量：export const firstName = 'Michael';"
+  },
+  "export_var_many": {
+    "scope": "javascript,typescript",
+    "prefix": "export_var_many",
+    "body": [
+      "export { firstName, lastName, year };",
+    ],
+    "description": "导出变量：export { firstName, lastName, year };"
+  },
+
+  "export_var_default": {
+    "scope": "javascript,typescript",
+    "prefix": "export_var_default",
+    "body": [
+      "export default foo",
+    ],
+    "description": "导出变量：export default foo"
+  },
+  "export_fun_one": {
+    "scope": "javascript,typescript",
+    "prefix": "export_fun_one",
+    "body": [
+      "export function multiply(x, y) {",
+      "  return x * y;",
+      "}",
+    ],
+    "description": "导出函数：export function multiply(x, y) {}"
+  },
+  "export_fun_default": {
+    "scope": "javascript,typescript",
+    "prefix": "export_fun_default",
+    "body": [
+      "export default function (obj) {",
+      "}"
+    ],
+    "description": "导入类库：export default function (obj) {}"
+  },
+  "export_var_as": {
+    "scope": "javascript,typescript",
+    "prefix": "export_var_as",
+    "body": [
+      "export { n as m };",
+    ],
+    "description": "导出变量：export { n as m };"
+  },
+  "import_var_as": {
+    "scope": "javascript,typescript",
+    "prefix": "import_var_as",
+    "body": [
+      "import { lastName as surname } from './profile.js';",
+    ],
+    "description": "导入变量：import { lastName as surname } from './profile.js';"
+  },
+  "import_var_one": {
+    "scope": "javascript,typescript",
+    "prefix": "import_var_one",
+    "body": [
+      "import { firstName, lastName, year } from './profile.js';",
+    ],
+    "description": "导入变量：import { firstName, lastName, year } from './profile.js';"
+  },
+  "import_var_all": {
+    "scope": "javascript,typescript",
+    "prefix": "import_var_all",
+    "body": [
+      "import * as circle from './circle';",
+    ],
+    "description": "导入变量：import * as circle from './circle';"
+  },
+  "import_lib": {
+    "scope": "javascript,typescript",
+    "prefix": "import_lib",
+    "body": [
+      "import 'lodash';",
+    ],
+    "description": "导入模块：import 'lodash';"
+  },
+  "import_lib_with_name": {
+    "scope": "javascript,typescript",
+    "prefix": "import_lib_with_name",
+    "body": [
+      "import circle from './circle';",
+    ],
+    "description": "导入模块：import circle from './circle';"
+  },
+  "import_lib_dynamic": {
+    "scope": "javascript,typescript",
+    "prefix": "import_lib_dynamic",
+    "body": [
+      "import('./somefile.js')",
+    ],
+    "description": "导入模块：动态引入 import('./somefile.js')"
+  },
+}
