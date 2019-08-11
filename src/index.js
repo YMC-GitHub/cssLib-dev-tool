@@ -1,15 +1,26 @@
-﻿import img from './logo.png';
-import css from './buttons.less';
-
-(()=>{document.getElementById("app").innerHTML = "hi,this is an example!"})()
-
-let a = 111;  
-let b = 222;  
-let xxx = (c,d) => c*d;  
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
+// import img from './logo.png';
+// eslint-disable-next-line
+import less from './buttons.less';
+// import css from './main.css';
 
 
-console.log(xxx(a,b)); 
+// eslint-disable-next-line no-undef
+const time = document.getElementById('time');
+function updateClock() {
+  time.innerHTML = (new Date()).toString();
+}
+const timer = setInterval(updateClock, 1000);
 
-console.log(`hey,man!`); 
-console.log(`here img show:${img}`); 
-console.log(`here css show:${css}`); 
+console.log('hi,my name is yemiancgeng!', less);
+console.log('hi,i come from china!');
+console.log('hi,it can refresh css!');
+console.log('hi,it can refresh js!');
+console.log('hi,it can refresh html!');
+if (module.hot) {
+  module.hot.accept();
+  module.hot.dispose(() => {
+    clearInterval(timer);
+  });
+}

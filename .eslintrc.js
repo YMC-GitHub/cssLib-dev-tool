@@ -1,9 +1,10 @@
 
 module.exports = {
   root: true,
-  plugins: ['prettier'],
+  //plugins: ['prettier'],
+  extends: ['yemiancheng'],
   rules: {
-    'prettier/prettier': ['error'],
+    //'prettier/prettier': ['error'],
     strict: ['off'],
   },
 };
