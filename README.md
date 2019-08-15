@@ -1,5 +1,7 @@
 ### 基于webpack开发样式类库
 
+[![Join the chat at https://gitter.im/cssLib-dev-tool/community](https://badges.gitter.im/cssLib-dev-tool/community.svg)](https://gitter.im/cssLib-dev-tool/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 > 这里使用express建服务器
 
 
