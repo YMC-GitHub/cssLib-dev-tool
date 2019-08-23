@@ -30,7 +30,7 @@ git clone  -b 3.0.0 https://github.com/YMC-GitHub/cssLib-dev-tool.git
 npm run dev
 
 //构建
-pro:webpack4
+npm run pro:webpack4
 
 //分析
 npm run study
@@ -45,6 +45,7 @@ npm run study
 npm run dev:webpack4
 npm run dev:simple-server
 npm run dev:complex-server
+npm run dev:custom-server
 # 产品模式
 npm run pro:webpack4
 
