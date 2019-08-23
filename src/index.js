@@ -6,12 +6,13 @@ import less from './buttons.less';
 // import css from './main.css';
 
 
-// eslint-disable-next-line no-undef
-const time = document.getElementById('time');
+// eslint-disable-next-line
+var time = document.getElementById('time');
 function updateClock() {
   time.innerHTML = (new Date()).toString();
 }
-const timer = setInterval(updateClock, 1000);
+// eslint-disable-next-line
+var timer = setInterval(updateClock, 1000);
 
 console.log('hi,my name is yemiancgeng!', less);
 console.log('hi,i come from china!');
