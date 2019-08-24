@@ -1,17 +1,19 @@
 搭建开发环境-开发样式-v2.0.0
 
 > 一定要注意版本，一定要注意版本，一定要注意版本！重要的事情说三遍。
-## 创建工程
+
+
+#### 创建工程
 ```
 npm int
 ```
 
-## 安装类库
+#### 安装类库
 ```
 npm install webpack@3.5.5 --save-dev
 ```
 
-## 构建目录
+#### 构建目录
 ```
 //配置文件
 Webpack.config.js
@@ -24,12 +26,12 @@ app/index.js
 //…随便写写
 ```
 
-## 编译试试
+#### 编译试试
 ```
 node_modules/.bin/webpack
 ```
 
-## 开浏览器
+#### 开浏览器
 ```
 //安装类库
 npm install opn --save-dev
@@ -39,7 +41,7 @@ var opn = require('opn');
 opn(''http://localhost:8080');
 ```
 
-## 建服务器
+#### 建服务器
 ```
 //step-01:安装类库
 npm i express@4.16.13 -D
@@ -67,7 +69,7 @@ module.exports = app.listen(8080, function (err) {
 
 ```
 
-## 自动刷新
+#### 自动刷新
 ```
 //step01-安装类库
 npm install --save-dev webpack-dev-middleware@1.8.3
@@ -235,7 +237,7 @@ hotClient.subscribe(function (event) {
   </body>
 </html>
 ```
-## 自刷配置
+#### 自刷配置
 ```
 //step-01:安装类库
 npm install nodemon@1.15.0 --save-dev
@@ -243,7 +245,7 @@ npm install nodemon@1.15.0 --save-dev
 "dev:watch": "nodemon --watch dev-server.js --exec \" node dev-server.js\""
 ```
 
-## 加载样式
+#### 加载样式
 ```
 //step01-安装类库
 npm install --save-dev style-loader@0.20.2 css-loader@0.28.10
@@ -270,7 +272,7 @@ var options = {
 }
 ```
 
-## 自动前缀
+#### 自动前缀
 ```
 //step-01:安装类库
 npm i autoprefixer@8.0.0 postcss-loader@2.1.1 --save-dev
@@ -295,7 +297,7 @@ module.exports = {
 
 ```
 
-## 预编样式
+#### 预编样式
 ```
 //step-01:安装类库
 npm install --save-dev less-loader@4.0.6 less@3.0.1
@@ -318,7 +320,7 @@ var options = {
   }
 }
 ```
-## 图片字体
+#### 图片字体
 ```
 //step-01:安装类库
 npm install --save-dev file-loader@1.1.10 url-loader@1.0.1
@@ -351,7 +353,7 @@ var options = {
 }
 ```
 
-## 产品环境
+#### 产品环境
 ```
 //step-01:安装依赖
 npm install --save-dev nodemon@1.15.0
@@ -482,13 +484,13 @@ module.exports = options;
 
 ```
 
-## 参考资料
+#### 参考资料
 
 - [webpack-自动刷新与解析](https://www.cnblogs.com/stoneniqiu/p/6444960.html)
 - [webpack-dev-server开启服务监测js、HTML、CSS并自动刷新网页的套路详细步骤并附代码](https://www.jianshu.com/p/c6f9eb3cba60)
 - [webpack 中 css 和 html 刷新问题的解决思路](https://www.cnblogs.com/liang1100/p/8457701.html)
 
-## 遇到问题
+#### 遇到问题
 ```
 问题：
 TypeError: webpack.optimize.OccurenceOrderPlugin is not a constructor
