@@ -66,12 +66,12 @@
     "webpack-hot-middleware": "^2.22.2"
   },
   "files": [
-    "webpack.config.js",
+    "build/webpack.config.js",
     "package.json",
     "README.md",
     "build/dev-server.js",
-    "build/dev-server.js",
-    "page-reload.js",
-    "config.js"
+    "build/dev-client.js",
+    "build/page-reload.js",
+    "build/config.js"
   ]
 }
