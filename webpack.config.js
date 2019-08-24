@@ -19,7 +19,7 @@ const isWebApp = !isCSSlib
 const useSimpleServer = process.env.SERVER_TYPE === 'simple';
 // console.log(process.env.SERVER_TYPE, useSimpleServer);
 const toMinifyJs = !devMode;
-const useComplexServer = !useSimpleServer;
+const useComplexServer = process.env.SERVER_TYPE === 'complex';
 // console.log(process.env.SERVER_TYPE, useComplexServer);
 
 // 设置入口
