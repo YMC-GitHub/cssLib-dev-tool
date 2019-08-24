@@ -14,7 +14,7 @@
 - [x] 预编样式
 - [x] 样式压缩
 - [x] 字体图标
-
+- [x] 前沿脚本
 
 #### 安装使用
 ```
@@ -23,7 +23,7 @@ step01:复制package.json
 step02:npm install
 
 方式2：
-git clone  -b 3.0.0 https://github.com/YMC-GitHub/cssLib-dev-tool.git
+git clone  -b 3.1.2 https://github.com/YMC-GitHub/cssLib-dev-tool.git
 ......
 
 //开发
@@ -147,6 +147,10 @@ eof
 实现页面重载:通过nodejs接口使用webpack，获得compiler；再将compiler传给webpack-hot-middleware，创建一个express的中间件hotMiddleware;express通过use使用该中间件（实现这是这几个东东的组合）。实现好这几个组合之后，还需要做两件事，其一是在webpack的配置文件中，对配置的entry的每个chunk前面加一个dev-client.js文件，这个文件作用是————接送服务器发送过来的推送，当服务器发送过来通知说要重新载入页面时，重新载入页面；第二件事是在当文件有改变时，服务端推送消息给客户端。这里通过在dev-server.js中引入page-reload.js，把compiler和hotMiddleware传给page-reload，让它做这件事，这个文件实现是————借助hotMiddleware的publish接口给客户端发送重载页面消息。
 
 注：这里只谈一些重要的！
+
+#### 前沿脚本
+
+让webpack支持处理es6+写法的脚本。通过对以.js或es6或msj结尾的脚本文件让babel-loader加载器加载。使用babel 7。
 
 #### 建设记录
 若想知道是怎么建的请点击[这里](./HISTORY.md)
