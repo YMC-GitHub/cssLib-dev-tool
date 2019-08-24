@@ -106,11 +106,11 @@ eof
 
 #### 加载图片
 
-对以png|jpe|jpeg|gif|svg为后缀的图片文件，使用url-loader加载器进行加载。如果图片大小小于8kb，注入到html的style标签内或css样式文件中；如果大于8kb，提取到工程的`img`目录，并以`[name]_[hash:7].[ext]`为文件名。
+对以png,jpe,jpeg,gif,svg为后缀的图片文件，使用url-loader加载器进行加载。如果图片大小小于8kb，注入到html的style标签内或css样式文件中；如果大于8kb，提取到工程的`img`目录，并以`[name]_[hash:7].[ext]`为文件名。
 
 #### 加载字体
 
-对以woff2|eot|ttf|otf为后缀的字体文件，使用url-loader加载器进行加载，如果字体大小小于1M，注入到html的style标签内或css样式文件中；如果大于1M，提取到工程的`fonts`目录，并以`[name]_[hash:7].[ext]`为文件名。
+对以woff2,eot,ttf,otf为后缀的字体文件，使用url-loader加载器进行加载，如果字体大小小于1M，注入到html的style标签内或css样式文件中；如果大于1M，提取到工程的`fonts`目录，并以`[name]_[hash:7].[ext]`为文件名。
 
 #### 预处理的
 
@@ -153,8 +153,10 @@ eof
 让webpack支持处理es6+写法的脚本。通过对以.js或es6或msj结尾的脚本文件让babel-loader加载器加载。使用babel 7。
 
 #### 建设记录
+
 若想知道是怎么建的请点击[这里](./how-to-build.md)
 
 #### 参考文献
 [webpack-offical-docs:guides:hot-module-replacement](https://webpack.js.org/guides/hot-module-replacement/)
+
 [webpack-hot-middleware-readme.md](https://github.com/webpack-contrib/webpack-hot-middleware)
