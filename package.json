@@ -2,7 +2,7 @@
   "name": "csslib-dev-tool",
   "version": "3.0.2",
   "description": "a tool for building css lib",
-  "main": "webpack.config.js",
+  "main": "build/webpack.config.js",
   "scripts": {
     "study": "webpack --config build/webpack.config.js --json --profile > stats.json",
     "dev:webpack4": "cross-env NODE_ENV=development webpack --config build/webpack.config.js",
@@ -10,9 +10,9 @@
     "dev:simple-server": "cross-env SERVER_TYPE=simple webpack-dev-server --config build/webpack.config.js",
     "dev:complex-server": "cross-env SERVER_TYPE=complex node build/dev-server.js",
     "dev:custom-server": "nodemon --watch build/dev-server.js --watch build/webpack.config.js --exec \"cross-env SERVER_TYPE=complex node build/dev-server.js\"",
-    "dev":"npm run dev:complex-server",
-    "pro":"npm run pro:webpack4",
-    "lint":"eslint src --fix"
+    "dev": "npm run dev:complex-server",
+    "pro": "npm run pro:webpack4",
+    "lint": "eslint src --fix"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,9 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.5.5",
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/runtime": "^7.5.5",
     "autoprefixer": "^9.6.1",
     "babel-loader": "^8.0.6",
     "balloon-css": "git+https://github.com/kazzkiq/balloon.css.git",
