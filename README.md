@@ -46,8 +46,10 @@ npm run dev:webpack4
 npm run dev:simple-server
 npm run dev:complex-server
 npm run dev:custom-server
+npm run dev
 # 产品模式
 npm run pro:webpack4
+npm run pro
 
 eof
 ```
