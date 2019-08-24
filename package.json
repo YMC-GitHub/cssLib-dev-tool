@@ -6,7 +6,7 @@
   "scripts": {
     "study": "webpack --json --profile > stats.json",
     "dev:webpack4": "cross-env NODE_ENV=development webpack --config webpack.config.js",
-    "pro:webpack4": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+    "pro:webpack4": "cross-env NODE_ENV=production webpack --config webpack.config.js  --progress --hide-modules",
     "dev:simple-server": "cross-env SERVER_TYPE=simple webpack-dev-server --config webpack.config.js",
     "dev:complex-server": "cross-env SERVER_TYPE=complex node dev-server.js",
     "dev:custom-server": "nodemon --watch dev-server.js --exec \"node dev-server.js\"",
