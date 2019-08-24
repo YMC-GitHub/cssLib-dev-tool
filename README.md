@@ -89,28 +89,28 @@ eof
 #### 加载样式
 
 开发环境时，使用css-loader加载器加载css文件
-产品环境时，使用cssloader加载器加载css文件。
+产品环境时，使用cssl-oader加载器加载css文件。
 
 #### 行内样式
 
 开发环境时，用style-loader加载器把css文件注入的html中（行内样式）。
-产品环境时，使用外部样式，移除style加载器。
+产品环境时，使用外部样式，移除style-loader加载器。
 
 #### 提取样式
 
-产品环境时，从html中把样式提取到css文件中。此处使用mini-css-extract-plugin插件对样式文件进行分离，并且使用该插件的加载器对提取的样式文件进行加载，以便后续实现压缩功能。样式文件提取后保存在`style.css`文件中
+产品环境时，从html中把样式提取到css文件中。此处使用mini-css-extract-plugin插件对样式文件进行提取，并且使用该插件的加载器对提取的样式文件进行加载，以便后续实现压缩功能。样式文件提取后保存在`style.css`文件中
 
 #### 压缩样式
 
-产品环境时，对提样式文件进行压缩。此处使用optimize-css-assets-webpack-plugin插件进行。
+产品环境时，对提取的样式文件进行压缩。此处使用optimize-css-assets-webpack-plugin插件进行。
 
 #### 加载图片
 
-对以png|jpe?g|gif|svg为后缀的图片文件，使用url-loader加载器进行加载，如果图片大小小于8kb，注入html的style标签内或css样式文件中；如果大于8kb，提取到工程的`img`目录，并以`[name]_[hash:7].[ext]`为文件名
+对以png|jpe|jpeg|gif|svg为后缀的图片文件，使用url-loader加载器进行加载。如果图片大小小于8kb，注入到html的style标签内或css样式文件中；如果大于8kb，提取到工程的`img`目录，并以`[name]_[hash:7].[ext]`为文件名。
 
 #### 加载字体
 
-对以woff2?|eot|ttf|otf为后缀的字体文件，使用url-loader加载器进行加载，如果字体大小小于1M，注入html的style标签内或css样式文件中；如果大于1M，提取到工程的`fonts`目录，并以`[name]_[hash:7].[ext]`为文件名
+对以woff2|eot|ttf|otf为后缀的字体文件，使用url-loader加载器进行加载，如果字体大小小于1M，注入到html的style标签内或css样式文件中；如果大于1M，提取到工程的`fonts`目录，并以`[name]_[hash:7].[ext]`为文件名。
 
 #### 预处理的
 
