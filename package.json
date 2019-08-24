@@ -1,6 +1,6 @@
 {
   "name": "csslib-dev-tool",
-  "version": "3.0.2",
+  "version": "3.1.2",
   "description": "a tool for building css lib",
   "main": "build/webpack.config.js",
   "scripts": {
