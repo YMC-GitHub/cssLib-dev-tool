@@ -68,7 +68,7 @@ if (CleanDistDir)plugin.push(new CleanWebpackPlugin());
 // feat:生成模板
 plugin.push(
   new HtmlWebpackPlugin({
-    template: path.resolve(__dirname, '../index.html'),
+    template: path.resolve(__dirname, '../src/index.html'),
     filename: path.resolve(__dirname, '../dist/index.html'),
   })
 );
