@@ -7,12 +7,12 @@ import less from './buttons.less';
 
 
 // eslint-disable-next-line
-var time = document.getElementById('time');
+let time = document.getElementById('time');
 function updateClock() {
   time.innerHTML = (new Date()).toString();
 }
 // eslint-disable-next-line
-var timer = setInterval(updateClock, 1000);
+let timer = setInterval(updateClock, 1000);
 
 console.log('hi,my name is yemiancgeng!', less);
 console.log('hi,i come from china!');
