@@ -151,6 +151,11 @@ webpackConfig.module = {
         limit: 8 * 1024,
         name: './fonts/[name]_[hash:7].[ext]'
       }
+    },
+    {
+      test: /\.(js|es6|mjs)$/,
+      exclude: /node_modules/,
+      use: 'babel-loader'
     }
   ]
 };
