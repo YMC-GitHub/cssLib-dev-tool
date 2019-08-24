@@ -1,4 +1,5 @@
 
+// eslint-disable-next-line no-unused-vars
 const callForWebpack3 = (compiler, hotMiddleware) => {
 // force page reload when html-webpack-plugin template changes
 // https://www.webpackjs.com/contribute/writing-a-plugin

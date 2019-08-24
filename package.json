@@ -4,13 +4,14 @@
   "description": "a tool for building css lib",
   "main": "webpack.config.js",
   "scripts": {
-    "study": "webpack --json --profile > stats.json",
-    "dev:webpack4": "cross-env NODE_ENV=development webpack --config webpack.config.js",
-    "pro:webpack4": "cross-env NODE_ENV=production webpack --config webpack.config.js  --progress --hide-modules",
-    "dev:simple-server": "cross-env SERVER_TYPE=simple webpack-dev-server --config webpack.config.js",
-    "dev:complex-server": "cross-env SERVER_TYPE=complex node dev-server.js",
-    "dev:custom-server": "nodemon --watch dev-server.js --exec \"node dev-server.js\"",
+    "study": "webpack --config build/webpack.config.js --json --profile > stats.json",
+    "dev:webpack4": "cross-env NODE_ENV=development webpack --config build/webpack.config.js",
+    "pro:webpack4": "cross-env NODE_ENV=production webpack --config build/webpack.config.js  --progress --hide-modules",
+    "dev:simple-server": "cross-env SERVER_TYPE=simple webpack-dev-server --config build/webpack.config.js",
+    "dev:complex-server": "cross-env SERVER_TYPE=complex node build/dev-server.js",
+    "dev:custom-server": "nodemon --watch build/dev-server.js --watch build/webpack.config.js --exec \"cross-env SERVER_TYPE=complex node build/dev-server.js\"",
     "dev":"npm run dev:complex-server",
+    "pro":"npm run pro:webpack4",
     "lint":"eslint src --fix"
   },
   "repository": {
@@ -65,8 +66,8 @@
     "webpack.config.js",
     "package.json",
     "README.md",
-    "dev-server.js",
-    "dev-server.js",
+    "build/dev-server.js",
+    "build/dev-server.js",
     "page-reload.js",
     "config.js"
   ]
