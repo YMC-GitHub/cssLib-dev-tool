@@ -153,7 +153,7 @@ eof
 让webpack支持处理es6+写法的脚本。通过对以.js或es6或msj结尾的脚本文件让babel-loader加载器加载。使用babel 7。
 
 #### 建设记录
-若想知道是怎么建的请点击[这里](./HISTORY.md)
+若想知道是怎么建的请点击[这里](./how-to-build.md)
 
 #### 参考文献
 [webpack-offical-docs:guides:hot-module-replacement](https://webpack.js.org/guides/hot-module-replacement/)
