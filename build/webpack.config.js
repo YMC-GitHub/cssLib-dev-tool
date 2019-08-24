@@ -29,8 +29,8 @@ const webpackConfig = {
     app: ['./src/index.js']
   },
   output: {
+    path: path.resolve(__dirname, '../dist'),
     filename: '[name].js',
-    path: path.resolve(__dirname, 'dist'),
     // it will be used within our server script
     publicPath: '/'
   }
@@ -38,7 +38,7 @@ const webpackConfig = {
 // feat:自动刷新
 if (useComplexServer) {
   Object.keys(webpackConfig.entry).forEach((name) => {
-    webpackConfig.entry[name] = ['./dev-client.js'].concat(webpackConfig.entry[name]);
+    webpackConfig.entry[name] = ['./build/dev-client.js'].concat(webpackConfig.entry[name]);
   });
 }
 
@@ -49,7 +49,7 @@ webpackConfig.devtool = devMode ? 'inline-source-map' : 'source-map';
 // 设服务器
 const simpleServerOptions = {
   // 资源目录
-  contentBase: path.join(__dirname, 'dist'),
+  contentBase: path.join(__dirname, '../dist'),
   // 是否压缩
   compress: true,
   // 服务端口
@@ -68,8 +68,8 @@ if (CleanDistDir)plugin.push(new CleanWebpackPlugin());
 // feat:生成模板
 plugin.push(
   new HtmlWebpackPlugin({
-    template: path.resolve(__dirname, './index.html'),
-    filename: path.resolve(__dirname, 'dist/index.html'),
+    template: path.resolve(__dirname, '../index.html'),
+    filename: path.resolve(__dirname, '../dist/index.html'),
   })
 );
 // feat:提取样式
@@ -186,6 +186,7 @@ function recursiveIssuer(m) {
   }
   return false;
 }
+// eslint-disable-next-line
 const ExtractingCSSBasedOnEntry = function (webpackConfig) {
   /* eslint-disable no-param-reassign */
   webpackConfig.optimization = webpackConfig.optimization || {};
