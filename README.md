@@ -89,7 +89,7 @@ eof
 #### 加载样式
 
 开发环境时，使用css-loader加载器加载css文件
-产品环境时，使用cssl-oader加载器加载css文件。
+产品环境时，使用css-loader加载器加载css文件。
 
 #### 行内样式
 
