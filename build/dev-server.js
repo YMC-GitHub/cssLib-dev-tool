@@ -4,8 +4,9 @@ const webpack = require('webpack');
 const path = require('path');
 
 const app = express();
-const config = require('./config.js');
+const serverConfig = require('../config/server.config');
 const webpackConfig = require('./webpack.config.js');
+const config = require('../config');
 const compiler = webpack(webpackConfig);
 const pageReloadHelper = require('./page-reload');
 
@@ -25,13 +26,14 @@ const hotMiddleware = require('webpack-hot-middleware')(compiler);
 pageReloadHelper(compiler, hotMiddleware);
 
 // 资源目录
-const staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory);
+const staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory.to);
 
 app.use(devMiddleware);
 app.use(hotMiddleware);
-app.use(staticPath, express.static('./static'));
+//static serve
+app.use(staticPath, express.static(serverConfig.dev.public));
 
-module.exports = app.listen(config.dev.port, (err) => {
+module.exports = app.listen(serverConfig.dev.port, (err) => {
   // 出错时：
   if (err) {
     console.log(err);
@@ -39,6 +41,6 @@ module.exports = app.listen(config.dev.port, (err) => {
   }
 
   // 成功时：
-  const uri = `${config.dev.host}:${config.dev.port}`;
+  const uri = `${serverConfig.dev.host}:${serverConfig.dev.port}`;
   console.log(`Dev server listening at ${uri}\n`);
 });

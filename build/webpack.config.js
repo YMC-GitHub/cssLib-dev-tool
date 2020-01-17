@@ -1,26 +1,31 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+//include some lib
+const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const path = require('path');
 
-const webpack = require('webpack');
+//include some data
 
-const devMode = process.env.NODE_ENV !== 'production';
+const config = require('../config');
+
+const isDevMode = process.env.NODE_ENV !== 'production';
 // console.log(devMode, process.env.NODE_ENV);
 //------------------------------------
 // 变量配置
 //------------------------------------
-const toExtractCss = !devMode;
 const isCSSlib = true;
 // eslint-disable-next-line
 const isWebApp = !isCSSlib
-const useSimpleServer = process.env.SERVER_TYPE === 'simple';
+const isMinifyCss = !isDevMode;
+const isExtractCss = !isDevMode;
 // console.log(process.env.SERVER_TYPE, useSimpleServer);
-const toMinifyJs = !devMode;
+const isMinifyJs = !isDevMode;
+const useSimpleServer = process.env.SERVER_TYPE === 'simple';
 const useComplexServer = process.env.SERVER_TYPE === 'complex';
-// console.log(process.env.SERVER_TYPE, useComplexServer);
+
 
 // 设置入口
 // 设置出口
@@ -29,31 +34,32 @@ const webpackConfig = {
     app: ['./src/index.js']
   },
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: isDevMode ? config.dev.assetsRoot : config.build.assetsRoot,
     filename: '[name].js',
     // it will be used within our server script
-    publicPath: '/'
+    publicPath: isDevMode ? config.dev.publicPath : config.build.publicPath
   }
 };
 // feat:自动刷新
-if (useComplexServer) {
+if (isDevMode && useComplexServer) {
   Object.keys(webpackConfig.entry).forEach((name) => {
     webpackConfig.entry[name] = ['./build/dev-client.js'].concat(webpackConfig.entry[name]);
   });
 }
 
 // 设置模式
-webpackConfig.mode = devMode ? 'development' : 'production';
+webpackConfig.mode = isDevMode ? 'development' : 'production';
 // 源码追踪
-webpackConfig.devtool = devMode ? 'inline-source-map' : 'source-map';
+webpackConfig.devtool = isDevMode ? 'inline-source-map' : 'source-map';
+
 // 设服务器
 const simpleServerOptions = {
   // 资源目录
-  contentBase: path.join(__dirname, '../dist'),
+  contentBase: config.dev.assetsRoot,
   // 是否压缩
   compress: true,
   // 服务端口
-  port: 8080,
+  port: config.dev.port,
   // 开浏览器
   open: true
   // ...
@@ -63,27 +69,27 @@ if (useSimpleServer) webpackConfig.devServer = simpleServerOptions;
 // 设置插件
 const plugin = [];
 // feat:清除目录
-const CleanDistDir = !!devMode;
-if (CleanDistDir)plugin.push(new CleanWebpackPlugin());
+const isCleanDistDir = !!isDevMode;
+if (isCleanDistDir) plugin.push(new CleanWebpackPlugin());
 // feat:生成模板
 plugin.push(
   new HtmlWebpackPlugin({
-    template: path.resolve(__dirname, '../src/index.html'),
-    filename: path.resolve(__dirname, '../dist/index.html'),
+    template: config.dev.index,
+    filename: config.build.index,
   })
 );
 // feat:提取样式
-if (toExtractCss) {
+if (isExtractCss) {
   plugin.push(new MiniCssExtractPlugin({
     // eslint-disable-next-line no-nested-ternary
-    filename: devMode ? '[name].css' : isCSSlib ? 'style.css' : '[name].[hash].css',
+    filename: isDevMode ? '[name].css' : isCSSlib ? 'style.css' : '[name].[hash].css',
     // eslint-disable-next-line no-nested-ternary
-    chunkFilename: devMode ? '[id].css' : isCSSlib ? 'style.[id].css' : '[id].[hash].css',
+    chunkFilename: isDevMode ? '[id].css' : isCSSlib ? 'style.[id].css' : '[id].[hash].css',
     ignoreOrder: false, // Enable to remove warnings about conflicting order
   }));
 }
 // feat：压缩脚本
-if (toMinifyJs) {
+if (isMinifyJs) {
   plugin.push(new UglifyJsPlugin({
     // 缓存
     cache: true,
@@ -113,10 +119,10 @@ const scssLoader = cssLoader.concat('sass-loader');
 const MiniCssExtractLoader = {};
 MiniCssExtractLoader.loader = MiniCssExtractPlugin.loader;
 MiniCssExtractLoader.options = {};
-MiniCssExtractLoader.options.hmr = !!devMode;
-MiniCssExtractLoader.options.reloadAll = !!devMode;
-if (toExtractCss) cssLoader[0] = MiniCssExtractLoader;
-if (toExtractCss) lessLoader[0] = MiniCssExtractLoader;
+MiniCssExtractLoader.options.hmr = !!isDevMode;
+MiniCssExtractLoader.options.reloadAll = !!isDevMode;
+if (isExtractCss) cssLoader[0] = MiniCssExtractLoader;
+if (isExtractCss) lessLoader[0] = MiniCssExtractLoader;
 
 webpackConfig.module = {
   rules: [
@@ -212,7 +218,6 @@ const ExtractingCSSBasedOnEntry = function (webpackConfig) {
   };
 };
 // feat:压缩样式
-const toMinifyCss = !devMode;
 // eslint-disable-next-line no-shadow
 function MinifyCss(webpackConfig) {
   webpackConfig.optimization = webpackConfig.optimization || {};
@@ -221,7 +226,7 @@ function MinifyCss(webpackConfig) {
     new OptimizeCSSAssetsPlugin({})
   );
 }
-if (toMinifyCss) MinifyCss(webpackConfig);
+if (isMinifyCss) MinifyCss(webpackConfig);
 
 
 // console.log(webpackConfig);
