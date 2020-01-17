@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const utils = require('./utils');
 const path = require('path');
 
 //include some data
@@ -35,7 +36,8 @@ const webpackConfig = {
   },
   output: {
     path: isDevMode ? config.dev.assetsRoot : config.build.assetsRoot,
-    filename: '[name].js',
+    filename: utils.assetsPath('[name].js'),
+    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js'),
     // it will be used within our server script
     publicPath: isDevMode ? config.dev.publicPath : config.build.publicPath
   }
@@ -69,7 +71,7 @@ if (useSimpleServer) webpackConfig.devServer = simpleServerOptions;
 // 设置插件
 const plugin = [];
 // feat:清除目录
-const isCleanDistDir = !!isDevMode;
+const isCleanDistDir = isDevMode;
 if (isCleanDistDir) plugin.push(new CleanWebpackPlugin());
 // feat:生成模板
 plugin.push(
@@ -82,9 +84,9 @@ plugin.push(
 if (isExtractCss) {
   plugin.push(new MiniCssExtractPlugin({
     // eslint-disable-next-line no-nested-ternary
-    filename: isDevMode ? '[name].css' : isCSSlib ? 'style.css' : '[name].[hash].css',
+    filename: isDevMode ? utils.assetsPath('[name].css') : isCSSlib ? utils.assetsPath('style.css') : utils.assetsPath('[name].[hash].css'),
     // eslint-disable-next-line no-nested-ternary
-    chunkFilename: isDevMode ? '[id].css' : isCSSlib ? 'style.[id].css' : '[id].[hash].css',
+    chunkFilename: isDevMode ? utils.assetsPath('[id].css') : isCSSlib ? utils.assetsPath('style.[id].css') : utils.assetsPath('[id].[hash].css'),
     ignoreOrder: false, // Enable to remove warnings about conflicting order
   }));
 }
@@ -146,7 +148,7 @@ webpackConfig.module = {
       loader: 'url-loader',
       options: {
         limit: 8 * 1024,
-        name: './img/[name]_[hash:7].[ext]'
+        name: utils.assetsPath('img/[name]_[hash:7].[ext]')
       }
     },
     // .woff2|eot|ttf|otf后缀文件用url-loader加载
@@ -155,7 +157,7 @@ webpackConfig.module = {
       loader: 'url-loader',
       options: {
         limit: 8 * 1024,
-        name: './fonts/[name]_[hash:7].[ext]'
+        name: utils.assetsPath('fonts/[name]_[hash:7].[ext]')
       }
     },
     {
