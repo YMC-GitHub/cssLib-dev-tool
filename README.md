@@ -1,6 +1,6 @@
-### 基于webpack开发样式类库
+### 基于webpack研发样式类库
 
-> 这里使用express建服务器
+> 这里使用express/webpack-dev-server建服务器
 
 
 #### 特征简介
@@ -16,111 +16,115 @@
 - [x] 字体图标
 - [x] 前沿脚本
 
-#### 安装使用
-```
-方式1：（推荐）
-step01:复制package.json
-step02:npm install
-
-方式2：
+#### 快速开始
+```sh
+#获取代码
 git clone  -b 3.1.2 https://github.com/YMC-GitHub/cssLib-dev-tool.git
-......
 
-//开发
+#研发
 npm run dev
-
-//构建
+#生产
 npm run pro:webpack4
-
-//分析
+#分析
 npm run study
 ```
 
 #### 一些命令
 
-通过下面的命令分别使用产品模式和开发模式
+通过下面的命令分别使用生产模式和研发模式
 ```sh
-::<<eof
-# 开发模式
+# 研发模式
 npm run dev:webpack4
 npm run dev:simple-server
 npm run dev:complex-server
 npm run dev:custom-server
 npm run dev
-# 产品模式
+# 生产模式
 npm run pro:webpack4
 npm run pro
-
-eof
 ```
 
 #### 入口文件
 
-```sh
-::<<eof
-开发时的脚本入口文件为：./src/index.js
-产品时的脚本入口文件为：./src/index.js
-eof
-```
+01.研发时的脚本入口文件 [config](./build/webpack.config.js#L35)
+
+02.生产时的脚本入口文件 [config](./build/webpack.config.js#L35)
+
 
 #### 出口文件
 
-```sh
-::<<eof
-开发时的脚本出口文件为：./dist/[name].js
-产品时的脚本出口文件为：./dist/[name].js
-产品时的样式出口文件为：
-eof
-```
+01.研发时的脚本输出文件 [config](./build/webpack.config.js#L37-#L43)
 
-#### 静态资源
+02.生产时的脚本输出文件 [config](./build/webpack.config.js#L37-#L43)
 
-```sh
-::<<eof
-开发时的静态资源目录为：/
-eof
-```
+03.生产时的样式输出文件 [config](./build/webpack.config.js#L84-#L92)
+
+04.生产时的图片输出文件 [config](./build/webpack.config.js#L146-#L153)
+
+05.生产时的字体输出文件 [config](./build/webpack.config.js#L155-#L162)
+
 
 #### 清除目录
 
-开发环境时，如果直接运行`npm run dev:webpack4`命令还是会输出文件的，但开发时不用它，用webpack-dev-server建简单的服务器或使用express+wenpack-dev-middware建立复杂的服务器。
-产品环境时，由于输出文件到磁盘，多次输出后，构建目录可能会遗留之前的构建文件，因此在构建之前，先把之前的构建目录内容进行清除。此处使用clean-webpack-plugin插件。
+研发环境时，如果直接运行`npm run dev:webpack4`命令还是会输出文件的，但研发时不用它，用webpack-dev-server建简单的服务器或使用express+wenpack-dev-middware建立复杂的服务器。
+
+生产环境时，由于输出文件到磁盘，多次输出后，构建目录可能会遗留之前的构建文件，因此在构建之前，先把之前的构建目录内容进行清除。此处使用clean-webpack-plugin插件。
+
+[config](./build/webpack.config.js#L73-#L75)
 
 #### 加载样式
 
-开发环境时，使用css-loader加载器加载css文件
-产品环境时，使用css-loader加载器加载css文件。
+研发环境时，使用css-loader等加载器加载css文件。
+
+生产环境时，使用css-loader等加载器加载css文件。
+
+[config](./build/webpack.config.js#L118)
 
 #### 行内样式
 
-开发环境时，用style-loader加载器把css文件注入的html中（行内样式）。
-产品环境时，使用外部样式，移除style-loader加载器。
+研发环境时，用style-loader加载器把css文件注入的html中（行内样式）。[config](./build/webpack.config.js#L118)
+
+生产环境时，使用外部样式，移除style-loader加载器。[config](./build/webpack.config.js#L126-#L127)
+
 
 #### 提取样式
 
-产品环境时，从html中把样式提取到css文件中。此处使用mini-css-extract-plugin插件对样式文件进行提取，并且使用该插件的加载器对提取的样式文件进行加载，以便后续实现压缩功能。样式文件提取后保存在`style.css`文件中
+生产环境时，从html中把样式提取到css文件中。此处使用mini-css-extract-plugin插件对样式文件进行提取，并且使用该插件的加载器对提取的样式文件进行加载，以便后续实现压缩功能[config](./build/webpack.config.js#L121-#L127)。样式文件提取后保存在`style.css`文件中[config](./build/webpack.config.js#L83-#L92)。
+
 
 #### 压缩样式
 
-产品环境时，对提取的样式文件进行压缩。此处使用optimize-css-assets-webpack-plugin插件进行。
+生产环境时，对提取的样式文件进行压缩。此处使用optimize-css-assets-webpack-plugin插件进行。
+
+[config](./build/webpack.config.js#L83-#L92)
+
 
 #### 加载图片
 
 对以png,jpe,jpeg,gif,svg为后缀的图片文件，使用url-loader加载器进行加载。如果图片大小小于8kb，注入到html的style标签内或css样式文件中；如果大于8kb，提取到工程的`img`目录，并以`[name]_[hash:7].[ext]`为文件名。
 
+[config](./build/webpack.config.js#L146-#L153)
+
 #### 加载字体
 
 对以woff2,eot,ttf,otf为后缀的字体文件，使用url-loader加载器进行加载，如果字体大小小于1M，注入到html的style标签内或css样式文件中；如果大于1M，提取到工程的`fonts`目录，并以`[name]_[hash:7].[ext]`为文件名。
 
+ [config](./build/webpack.config.js#L155-#L162)
+
+
 #### 预处理的
 
-对以.less结尾的文件先用less-loader加载器加载，并经less类库处理成css。
-对以.scss或sass结尾的文件先用sass-loader加载器加载，并经node-sass类库处理成css。
+对以.less结尾的文件先用less-loader加载器加载，并经less类库处理成css。 [config](./build/webpack.config.js#L119)
+
+对以.scss或sass结尾的文件先用sass-loader加载器加载，并经node-sass类库处理成css。[config](./build/webpack.config.js#L120)
+
+
 
 #### 自动前缀
 
-对以.css文件，先使用postcss-loader加载器加载，使用postcss类库处理后，再进行其他处理。使用postcss处理时，使用autoprefixer类库作为postcss的插件使用，实现自动前缀。autoprefixer类库根据.browserslistrc文件中指定要兼容的浏览器种类和版本进行前缀处理。
-而对于.less结尾的文件和.scss或sass结尾的文件，先经过各自的预处理器加载器加载，再用postcss-loader加载器加载，再进行其他处理。
+对以.css文件，先使用postcss-loader加载器加载，使用postcss类库处理后，再进行其他处理[config](./build/webpack.config.js#L118)。使用postcss处理时，使用autoprefixer类库作为postcss的插件使用，实现自动前缀[config](./postcss.config.js#L3)。autoprefixer类库根据.browserslistrc文件中指定要兼容的浏览器种类和版本进行前缀处理(./.browserslistrc#L9-#L14)。
+
+对于.less结尾的文件和.scss或sass结尾的文件，先经过各自的预处理器加载器加载，再用postcss-loader加载器加载，再进行其他处理。
 
 注：一般用了postcss编写代码以后，less和sass/scss这些就可以舍弃了。postcss是趋势。
 
@@ -129,9 +133,13 @@ eof
 
 01.本项目的示例样式由于使用了这些特性[user-select-none,transforms2d,css-boxshadow,css-textshadow](http://www.iwanttouse.com/#user-select-none,transforms2d,css-boxshadow,css-textshadow)，所以示例只能支持这些浏览器:
 
+<div align=center>
+
 | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari-ios/safari-ios_48x48.png" alt="iOS Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>iOS Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Opera |
 | --------- | --------- | --------- | --------- | --------- |
 | IE10, IE11, Edge| >=3| >=4| >=4| >=15
+
+</div>
 
 02.支持全球85.13%的用户
 

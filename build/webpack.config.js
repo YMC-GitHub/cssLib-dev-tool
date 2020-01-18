@@ -125,7 +125,7 @@ MiniCssExtractLoader.options.hmr = !!isDevMode;
 MiniCssExtractLoader.options.reloadAll = !!isDevMode;
 if (isExtractCss) cssLoader[0] = MiniCssExtractLoader;
 if (isExtractCss) lessLoader[0] = MiniCssExtractLoader;
-
+if (isExtractCss) scssLoader[0] = MiniCssExtractLoader;
 webpackConfig.module = {
   rules: [
     {
