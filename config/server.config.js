@@ -9,7 +9,7 @@ module.exports = {
     //which port is?
     port: 3000,
     //where the html file to serve?
-    www: resolve('../dist'),
+    www: projectDirConstrutoConfig.dist,
     //what is the name of html files
     index: resolve('../dist/index.html'),
     //where the static file to serve?
@@ -23,7 +23,7 @@ module.exports = {
     //which port is?
     port: 8080,
     //where the html file to serve?
-    www: resolve('../dist'),
+    www: projectDirConstrutoConfig.dist,
     //what is the name of html files
     index: resolve('../src/index.html'),
     //where the static file to serve?
